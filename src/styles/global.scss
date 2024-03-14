@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@400;500;600;700&family=Roboto&display=swap");
+
+:root {
+  --primary-color: #3c4bdc;
+  --bg-color: #f6f8f9;
+  --text-color: #000000;
+  --gray-color: #3c464e;
+  --danger-color: #ff0000;
+  --white-color: #ffffff;
+  --border-radius: 11px;
+}
+
+html,
+body {
+  background: #f6f8f9;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  border: none;
+  cursor: pointer;
+}
