@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { isLogged, logIn, logOut } from "../../../redux/user.slice";
 
 export default function Register() {
+  const [password, setPassword] = useState(true);
   const [userData, setUserData] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Register() {
   } = useForm();
 
   const onSubmit = (value) => {
-    console.log(value)
+    console.log(value);
     registerUser(value)
       .then((res) => {
         setUserData(res.data);
@@ -30,11 +31,11 @@ export default function Register() {
   };
 
   if (userData?.isOk) {
-    dispatch(logIn())
-    dispatch(isLogged(userData))
-    navigate("/")
-  }else {
-    dispatch(logOut())
+    dispatch(logIn());
+    dispatch(isLogged(userData));
+    navigate("/");
+  } else {
+    dispatch(logOut());
   }
 
   return (
@@ -82,15 +83,29 @@ export default function Register() {
           <ErrorMessage error={errors?.key?.message} />
 
           <p className="font-semibold text-gray-700 mt-3">Password *</p>
-          <Input
-            type="password"
-            name="secret"
-            placeholder="Password"
-            {...register("secret", {
-              required: "this field is required",
-            })}
-            className={`${errors.secret?.message && "border-red-500"}`}
-          />
+          <div className="w-fit relative">
+            <Input
+              type={password ? "password" : "text"}
+              name="secret"
+              placeholder="Password"
+              {...register("secret", {
+                required: "this field is required",
+              })}
+              className={`${errors.secret?.message && "border-red-500"}`}
+            />
+            <button
+              className="absolute top-[6px] right-0 text-gray-600"
+              onClick={() => setPassword((prev) => !prev)}
+              type="button"
+            >
+              {" "}
+              {password ? (
+                <i className="fa-solid fa-eye-slash"></i>
+              ) : (
+                <i className="fa-solid fa-eye"></i>
+              )}{" "}
+            </button>
+          </div>
           <ErrorMessage error={errors?.secret?.message} />
           <Button
             type="submit"
